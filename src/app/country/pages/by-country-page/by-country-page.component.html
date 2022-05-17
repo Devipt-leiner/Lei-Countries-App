@@ -3,9 +3,7 @@
 
 <div class="row">
   <div class="col">
-    <form (ngSubmit)="search()" autocomplete="off" action="">
-      <input [(ngModel)]="term" type="text" name="term" placeholder="Search country..." class="form-control">
-    </form>
+    <app-input-country (onEnter)="search($event)"></app-input-country>
   </div>
 </div>
 <hr>
@@ -14,25 +12,8 @@
   <p>Nothing was found with the term "{{ term }}"</p>
 </div>
 
-<table *ngIf="!thereIsError" class="table table-hover">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Flag</th>
-      <th>Name</th>
-      <th>Population</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>flag</td>
-      <td>Colombia</td>
-      <td>1234567</td>
-      <td>
-        <a href="/country/co">Ver...</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="countries.length > 0" class="row">
+  <div class="col">
+    <app-country-table [countries]="countries"></app-country-table>
+  </div>
+</div>
