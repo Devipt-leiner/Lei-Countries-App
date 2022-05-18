@@ -1,1 +1,34 @@
-<p>by-region-page works!</p>
+<div class="animate__animated animate__fadeInDown">
+  <h3>Search countries by region <small>{{ regionActivated | titlecase }}</small></h3>
+  <hr>
+
+  <h5>Select the region</h5>
+
+  <div class="row">
+    <div class="col">
+
+      <!-- [class.btn-dark]="region === regionActivated" -->
+
+      <!-- [ngClass]="{
+        'btn-dark': regionActivated === region,
+        'btn-outline-dark': regionActivated !== region
+      }" -->
+
+      <button
+        [class]="(region === regionActivated) ? 'btn btn-dark me-2': 'btn btn-outline-dark me-2'"
+        *ngFor="let region of regions"
+        (click)="regionActive(region)"
+        >
+        {{ region | titlecase}}
+      </button>
+    </div>
+</div>
+
+
+  <div *ngIf="regionActivated !== ''" class="row mt-4">
+    <div class="col">
+      <app-country-table [countries]="countries"></app-country-table>
+    </div>
+  </div>
+</div>
+

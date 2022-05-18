@@ -12,10 +12,14 @@ export class ByCountryPageComponent {
   thereIsError?: boolean;
   countries: Country[] = [];
 
+  countriesSuggested: Country[] = [];
+  showSuggestions: boolean = false;
+
   constructor (private countryService: CountryService) { }
 
   search (term: string) {
     this.thereIsError = false;
+    this.showSuggestions = false;
     this.term = term;
 
     this.countryService.searchCountry(term).subscribe((response) => {
@@ -32,13 +36,17 @@ export class ByCountryPageComponent {
 
     this.countryService.searchCountry(term).subscribe({
       next: (response) => {
-        this.countries = response;
+        this.countriesSuggested = response.splice(0,5);
       },
       error: (error) => {
         this.thereIsError = true;
-        this.countries = [];
+        this.countriesSuggested = [];
       }
     });
+  }
+
+  searchSuggested (term: string) {
+    this.search(term);
   }
 
 }

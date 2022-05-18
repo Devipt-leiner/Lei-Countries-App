@@ -3,7 +3,7 @@
 </div>
 
 <ng-template #divCountry>
-  <div class="row">
+  <div class="row animate__animated animate__fadeInDown">
     <div class="col-12">
       <h1>Country: <small>{{ country[0].name.common }}</small></h1>
     </div>
@@ -11,7 +11,7 @@
 
   <hr>
 
-  <div class="row">
+  <div class="row animate__animated animate__fadeInRightBig animate__delay-.8s">
     <div class="col-4">
       <h3>Flag</h3>
       <img class="img-thumbnail" [src]="country[0].flags.svg" alt="">
@@ -27,21 +27,21 @@
     </div>
   </div>
 
-  <h3>Translations</h3>
+  <h3 class="animate__animated animate__fadeInRightBig animate__delay-.8s">Translations</h3>
   <div class="row">
     <div class="col">
       <span
         *ngFor="let t of country[0].translations | keyvalue"
-        class="badge bg-primary me-1"
+        class="badge bg-primary me-1 animate__animated animate__bounceIn animate__delay-1s"
         >
         {{ t.value.official }}
       </span>
     </div>
   </div>
 
-  <pre class="mt-5">
+  <!-- <pre class="mt-5">
     {{ country[0] | json }}
-  </pre>
+  </pre> -->
 </ng-template>
 
 
