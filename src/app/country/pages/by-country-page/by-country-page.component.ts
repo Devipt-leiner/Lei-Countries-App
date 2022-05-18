@@ -8,8 +8,8 @@ import { CountryService } from '../../services/country.service';
 })
 export class ByCountryPageComponent {
 
-  term!: string;
-  thereIsError?: boolean;
+  term: string = '';
+  thereIsError: boolean = false;
   countries: Country[] = [];
 
   countriesSuggested: Country[] = [];
@@ -18,8 +18,8 @@ export class ByCountryPageComponent {
   constructor (private countryService: CountryService) { }
 
   search (term: string) {
-    this.thereIsError = false;
     this.showSuggestions = false;
+    this.thereIsError = false;
     this.term = term;
 
     this.countryService.searchCountry(term).subscribe((response) => {
@@ -33,6 +33,7 @@ export class ByCountryPageComponent {
   suggestions (term: string) {
     this.thereIsError = false;
     this.term = term;
+    this.showSuggestions = true;
 
     this.countryService.searchCountry(term).subscribe({
       next: (response) => {
