@@ -26,4 +26,19 @@ export class ByCountryPageComponent {
     });
   }
 
+  suggestions (term: string) {
+    this.thereIsError = false;
+    this.term = term;
+
+    this.countryService.searchCountry(term).subscribe({
+      next: (response) => {
+        this.countries = response;
+      },
+      error: (error) => {
+        this.thereIsError = true;
+        this.countries = [];
+      }
+    });
+  }
+
 }

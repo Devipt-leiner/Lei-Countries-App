@@ -1,1 +1,47 @@
-<p>view-country-page works!</p>
+<div *ngIf="!country; else divCountry" class="alert alert-info">
+  Espere por favor...
+</div>
+
+<ng-template #divCountry>
+  <div class="row">
+    <div class="col-12">
+      <h1>Country: <small>{{ country[0].name.common }}</small></h1>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-4">
+      <h3>Flag</h3>
+      <img class="img-thumbnail" [src]="country[0].flags.svg" alt="">
+    </div>
+
+    <div class="col">
+      <h3>Information</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Population</strong> {{ country[0].population | number }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Translations</h3>
+  <div class="row">
+    <div class="col">
+      <span
+        *ngFor="let t of country[0].translations | keyvalue"
+        class="badge bg-primary me-1"
+        >
+        {{ t.value.official }}
+      </span>
+    </div>
+  </div>
+
+  <pre class="mt-5">
+    {{ country[0] | json }}
+  </pre>
+</ng-template>
+
+
