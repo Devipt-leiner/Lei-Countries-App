@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'countriesApp';
+
+  app: boolean = false;
+
+  showApp (value: boolean) {
+    this.app = true;
+  }
 }
