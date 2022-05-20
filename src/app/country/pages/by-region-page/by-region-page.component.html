@@ -15,6 +15,7 @@
       }" -->
 
       <button
+        class="mt-2"
         [class]="(region === regionActivated) ? 'btn btn-dark me-2': 'btn btn-outline-dark me-2'"
         *ngFor="let region of regions"
         (click)="regionActive(region)"

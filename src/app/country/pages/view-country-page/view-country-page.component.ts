@@ -8,8 +8,9 @@ import { Country } from '../../interfaces/countries.interface';
 @Component({
   selector: 'app-view-country-page',
   templateUrl: './view-country-page.component.html',
-  styles: [
-  ]
+  styles: [`
+
+  `]
 })
 export class ViewCountryPageComponent implements OnInit {
 
